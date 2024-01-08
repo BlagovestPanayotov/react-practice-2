@@ -9,6 +9,18 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
 
 const queryClient = new QueryClient();
+//   {
+//   defaultOptions: {
+//     queries: {
+//       retry: 3,
+//       gcTime: 300000, //cacheTime 5m
+//       staleTime: 10 * 1000, // 10s
+//       refetchOnWindowFocus: false,
+//       refetchOnReconnect: false,
+//       refetchOnMount: false,
+//     },
+//   },
+// }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
