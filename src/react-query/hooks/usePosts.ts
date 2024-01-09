@@ -8,15 +8,19 @@ interface Post {
   userId: number;
 }
 
-const usePosts = () => {
+const usePosts = (userId: number | undefined) => {
   const fetchPosts = () => {
     return axios
-      .get<Post[]>("https://jsonplaceholder.typicode.com/posts")
+      .get<Post[]>("https://jsonplaceholder.typicode.com/posts", {
+        params: {
+          userId: userId || null,
+        },
+      })
       .then((res) => res.data);
   };
 
   return useQuery({
-    queryKey: ["posts"],
+    queryKey: userId ? ["users", userId, "posts"] : ["posts"],
     queryFn: fetchPosts,
     staleTime: 1 * 60 * 1000, //1m
   });
