@@ -1,14 +1,14 @@
-import { useReducer, useState } from "react";
-import tasksReducer, { Task } from "./reducers/tasksReducer";
+import { useContext, useReducer, useState } from "react";
+import TasksContext from "./contexts/tasksContext";
 
 const TaskList = () => {
-  const [tasks, action] = useReducer(tasksReducer, []);
+  const { tasks, dispatch } = useContext(TasksContext);
 
   return (
     <>
       <button
         onClick={() =>
-          action({
+          dispatch({
             type: "ADD",
             task: { id: Date.now(), title: "Task " + Date.now() },
           })
@@ -26,7 +26,7 @@ const TaskList = () => {
             <span className="flex-grow-1">{task.title}</span>
             <button
               className="btn btn-outline-danger"
-              onClick={() => action({ type: "DELETE", taskId: task.id })}
+              onClick={() => dispatch({ type: "DELETE", taskId: task.id })}
             >
               Delete
             </button>
