@@ -10,7 +10,7 @@ const UserDetailPage = () => {
   // console.log(searchParams.get("name"));
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   return <p>User</p>;
 };
